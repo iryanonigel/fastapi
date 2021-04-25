@@ -6,7 +6,7 @@ pd.set_option('display.max_columns', None)
 
 
 match = []
-for i in tqdm(range (1, 122)):
+for i in tqdm(range (1, 2)):
     url = 'https://api.opendota.com/api/heroes/' + str(i) + '/matchups'
     data = requests.get(url)
     match_temp = json.loads(data.text)
