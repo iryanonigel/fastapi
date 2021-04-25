@@ -6,7 +6,7 @@ pd.set_option('display.max_columns', None)
 
 
 match = []
-for i in tqdm(range (1, 2)):
+for i in tqdm(range (121, 122)):
     url = 'https://api.opendota.com/api/heroes/' + str(i) + '/matchups'
     data = requests.get(url)
     match_temp = json.loads(data.text)
@@ -117,4 +117,40 @@ app = FastAPI()
 @app.get("/")
 def read_root():
     return main
+
+@app.get("/carry")
+def read_root():
+    return json.loads(dota_df[dota_df['Carry']==True].to_json(orient="records"))
+
+@app.get("/nuker")
+def read_root():
+    return json.loads(dota_df[dota_df['Nuker']==True].to_json(orient="records"))
+
+@app.get("/initiator")
+def read_root():
+    return json.loads(dota_df[dota_df['Initiator']==True].to_json(orient="records"))
+
+@app.get("/disabler")
+def read_root():
+    return json.loads(dota_df[dota_df['Disabler']==True].to_json(orient="records"))
+
+@app.get("/durable")
+def read_root():
+    return json.loads(dota_df[dota_df['Durable']==True].to_json(orient="records"))
+
+@app.get("/escape")
+def read_root():
+    return json.loads(dota_df[dota_df['Escape']==True].to_json(orient="records"))
+
+@app.get("/support")
+def read_root():
+    return json.loads(dota_df[dota_df['Support']==True].to_json(orient="records"))
+
+@app.get("/pusher")
+def read_root():
+    return json.loads(dota_df[dota_df['Pusher']==True].to_json(orient="records"))
+
+@app.get("/jungler")
+def read_root():
+    return json.loads(dota_df[dota_df['Jungler']==True].to_json(orient="records"))
 
