@@ -1,3 +1,7 @@
 fastapi==0.63.0
 gunicorn==20.0.4
 uvicorn==0.11.2
+requests==2.25.1
+pandas==1.1.5
+tqdm==4.60.0
+jsonschema @ file:///tmp/build/80754af9/jsonschema_1602607155483/work
