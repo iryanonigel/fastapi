@@ -154,3 +154,10 @@ def read_root():
 def read_root():
     return json.loads(dota_df[dota_df['Jungler']==True].to_json(orient="records"))
 
+@app.get("/highest_win_rate")
+def read_root():
+    return json.loads(dota_df[dota_df['win_rate']==dota_df['win_rate'].max()].to_json(orient="records"))
+
+@app.get("/most_played")
+def read_root():
+    return json.loads(dota_df[dota_df['games_played']==dota_df['games_played'].max()].to_json(orient="records"))
