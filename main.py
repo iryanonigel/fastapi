@@ -45,7 +45,6 @@ heroes_df.drop('roles', 1,inplace=True)
 # joining match data and hero data to get the final dataframe
 dota_df = pd.merge(heroes_df, match_final_df, left_on='id', right_on='hero_id', how='inner').drop('hero_id', 1)
 
-from typing import Optional
 from fastapi import FastAPI
 import uvicorn
 
@@ -56,7 +55,7 @@ def read_root():
     return {'message':'Dota 2 Heroes API', 
             'version':'BETA 0.9', 
             'endpoints':{'/[hero roles]':'List of heroes filtered by [hero roles] sorted by win rate descending. For example: /carry for carry heroes',
-                         '/[total hero roles]_roles':'List of heroes filtered by [total hero roles] sorted by win rate descending. For example: /2_roles for 2 role heroes',
+                         '/[total hero role]_role':'List of heroes filtered by [total hero role] sorted by win rate descending. For example: /2_role for 2 role heroes',
                          '/highest_win_rate':'Show the highest win rate hero from all roles',
                          '/most_played':'Show the most played hero from all roles'
                         }
@@ -98,23 +97,23 @@ def read_root():
 def read_root():
     return json.loads(dota_df[dota_df['Jungler']==True].sort_values(by='win_rate', ascending = False).to_json(orient="records"))
 
-@app.get("/2_roles") # list all 2 role heroes sorted from highest win rate to lowest win rate
+@app.get("/2_role") # list all 2 role heroes sorted from highest win rate to lowest win rate
 def read_root():
     return json.loads(dota_df[dota_df['total_roles']==2].sort_values(by='win_rate', ascending=False).to_json(orient="records"))
 
-@app.get("/3_roles") # list all 3 role heroes sorted from highest win rate to lowest win rate
+@app.get("/3_role") # list all 3 role heroes sorted from highest win rate to lowest win rate
 def read_root():
     return json.loads(dota_df[dota_df['total_roles']==3].sort_values(by='win_rate', ascending=False).to_json(orient="records"))
 
-@app.get("/4_roles") # list all 4 role heroes sorted from highest win rate to lowest win rate
+@app.get("/4_role") # list all 4 role heroes sorted from highest win rate to lowest win rate
 def read_root():
     return json.loads(dota_df[dota_df['total_roles']==4].sort_values(by='win_rate', ascending=False).to_json(orient="records"))
 
-@app.get("/5_roles") # list all 5 role heroes sorted from highest win rate to lowest win rate
+@app.get("/5_role") # list all 5 role heroes sorted from highest win rate to lowest win rate
 def read_root():
     return json.loads(dota_df[dota_df['total_roles']==5].sort_values(by='win_rate', ascending=False).to_json(orient="records"))
 
-@app.get("/6_roles") # list all 6 role heroes sorted from highest win rate to lowest win rate
+@app.get("/6_role") # list all 6 role heroes sorted from highest win rate to lowest win rate
 def read_root():
     return json.loads(dota_df[dota_df['total_roles']==6].sort_values(by='win_rate', ascending=False).to_json(orient="records"))
 
