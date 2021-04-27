@@ -62,65 +62,65 @@ def read_root():
            }
 
 @app.get("/carry") # list all carry heroes sorted from highest win rate to lowest win rate
-def read_root():
+def carry():
     return json.loads(dota_df[dota_df['Carry']==True].sort_values(by='win_rate', ascending = False).to_json(orient="records"))
 
 @app.get("/nuker") # list all nuker heroes sorted from highest win rate to lowest win rate
-def read_root():
+def nuker():
     return json.loads(dota_df[dota_df['Nuker']==True].sort_values(by='win_rate', ascending = False).to_json(orient="records"))
 
 @app.get("/initiator") # list all initiator heroes sorted from highest win rate to lowest win rate
-def read_root():
+def initiator():
     return json.loads(dota_df[dota_df['Initiator']==True].sort_values(by='win_rate', ascending = False).to_json(orient="records"))
 
 @app.get("/disabler") # list all disabler heroes sorted from highest win rate to lowest win rate
-def read_root():
+def disabler():
     return json.loads(dota_df[dota_df['Disabler']==True].sort_values(by='win_rate', ascending = False).to_json(orient="records"))
 
 @app.get("/durable") # list all durable heroes sorted from highest win rate to lowest win rate
-def read_root():
+def durable():
     return json.loads(dota_df[dota_df['Durable']==True].sort_values(by='win_rate', ascending = False).to_json(orient="records"))
 
 @app.get("/escape") # list all escape heroes sorted from highest win rate to lowest win rate
-def read_root():
+def escape():
     return json.loads(dota_df[dota_df['Escape']==True].sort_values(by='win_rate', ascending = False).to_json(orient="records"))
 
 @app.get("/support") # list all support heroes sorted from highest win rate to lowest win rate
-def read_root():
+def support():
     return json.loads(dota_df[dota_df['Support']==True].sort_values(by='win_rate', ascending = False).to_json(orient="records"))
 
 @app.get("/pusher") # list all pusher heroes sorted from highest win rate to lowest win rate
-def read_root():
+def pusher():
     return json.loads(dota_df[dota_df['Pusher']==True].sort_values(by='win_rate', ascending = False).to_json(orient="records"))
 
 @app.get("/jungler") # list all jungler heroes sorted from highest win rate to lowest win rate
-def read_root():
+def jungler():
     return json.loads(dota_df[dota_df['Jungler']==True].sort_values(by='win_rate', ascending = False).to_json(orient="records"))
 
 @app.get("/2_role") # list all 2 role heroes sorted from highest win rate to lowest win rate
-def read_root():
+def role_2():
     return json.loads(dota_df[dota_df['total_roles']==2].sort_values(by='win_rate', ascending=False).to_json(orient="records"))
 
 @app.get("/3_role") # list all 3 role heroes sorted from highest win rate to lowest win rate
-def read_root():
+def role_3():
     return json.loads(dota_df[dota_df['total_roles']==3].sort_values(by='win_rate', ascending=False).to_json(orient="records"))
 
 @app.get("/4_role") # list all 4 role heroes sorted from highest win rate to lowest win rate
-def read_root():
+def role_4():
     return json.loads(dota_df[dota_df['total_roles']==4].sort_values(by='win_rate', ascending=False).to_json(orient="records"))
 
 @app.get("/5_role") # list all 5 role heroes sorted from highest win rate to lowest win rate
-def read_root():
+def role_5():
     return json.loads(dota_df[dota_df['total_roles']==5].sort_values(by='win_rate', ascending=False).to_json(orient="records"))
 
 @app.get("/6_role") # list all 6 role heroes sorted from highest win rate to lowest win rate
-def read_root():
+def role_6():
     return json.loads(dota_df[dota_df['total_roles']==6].sort_values(by='win_rate', ascending=False).to_json(orient="records"))
 
 @app.get("/highest_win_rate") # show the highest win rate hero from all roles
-def read_root():
+def highest_win_rate():
     return json.loads(dota_df[dota_df['win_rate']==dota_df['win_rate'].max()].to_json(orient="records"))
 
 @app.get("/most_played") # show the most played hero from all roles
-def read_root():
+def most_played():
     return json.loads(dota_df[dota_df['games_played']==dota_df['games_played'].max()].to_json(orient="records"))
